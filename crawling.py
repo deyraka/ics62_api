@@ -6,15 +6,15 @@ import logging
 
 #initiate variable
 session = requests.session()
-token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJpZFwiOlwiRDVFRjM3RkYtREMwNS00QTYxLUE3MzAtMzZEQkQ1QjlERjg1XCIsXCJ1c2VybmFtZVwiOlwicHJvdl82MlwiLFwiZnVsbG5hbWVcIjpcIkFkbWluIEJQUyBQcm92aW5zaSBLYWxpbWFudGFuIFRlbmdhaFwiLFwiZW1haWxcIjpcInByb3ZfNjJAZ21haWwuY29tXCIsXCJyb2xlSWRcIjpcIjY0RkZCNEM3LTYwRDQtNDQ0Ri1BQjIwLUI2NjRBQjhDRThEOFwiLFwicm9sZU5hbWVcIjpcIkJQUyBQUk9WSU5TSSBBRE1JTlwiLFwicHJvdmluY2VJZFwiOlwiNTEwMjA5NUYtMDIyMi00NThGLUI4RDUtMEI1ODQwRjQ2OUI4XCIsXCJwcm92aW5jZU5hbWVcIjpcIkthbGltYW50YW4gVGVuZ2FoXCIsXCJyZWdlbmN5SWRcIjpudWxsLFwicmVnZW5jeU5hbWVcIjpudWxsLFwid29ya1VuaXRJZFwiOlwiQzM4QzU2NjctM0JCMC00NDNDLUE0MzUtMUVFQ0Q3QzZERkEyXCIsXCJ3b3JrVW5pdE5hbWVcIjpcIkJBREFOIFBVU0FUIFNUQVRJU1RJS1wifSIsImF1ZCI6Im5vbi1jYXdpIiwiZXhwIjoxNjQwNDc2NTM5LCJyb2wiOiJCUFMgUFJPVklOU0kgQURNSU4ifQ.CGFYzqqEv6TYC60GC5gmX1d-myq2knpIRZEPQ5-gsLYVacgxQyBr_faI_nvQ0q0bOzbPUxXOYCbfwy0LAf-8aQ'
-cookie = '_ga=GA1.3.2098390205.1575596407; anova2=GA1.3.805240235.1609971573'
-regencyId = {"kobar":"9716A5B4-F768-42EB-8EBB-90AAB6B22DDB", "kotim": "A4B7C36F-256E-4853-A6D3-DF970247D172", "palangka": "7D08C1F1-3AD3-4115-BDF3-EED00B633528"}
+token = 'input your Bearer Token Here'
+cookie = 'input your cookie value here'
+regencyId = {"kab_name1":"id1", "kab_name2":"id2", "kab_name3":"id3", 'dst'}
 totalRecord = 0
 startOfQuery = 0    #untuk parameter start pada payload yang dikirim bersama method POST ke url_API
 lenghtOfQuery = 1000  #untuk parameter lenght pada payload yang dikirim bersama method POST ke url_API
 crawledDataLenght = startOfQuery      #untuk mengukur panjang data yang telah berhasil di crawling. digunakan untuk batasan nilai iterasi saat crawling 
 
-url = 'https://api-coolsis.bps.go.id/survey-collection-management/api/assignment/datatable-all-user-survey-periode'
+url = 'input ics url here'
 headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0', 
             'Accept': 'application/json', 
             'Content-Type': 'application/json', 
@@ -82,9 +82,9 @@ def insertToMySQL(data):
     #connect to DB
     mydb = mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="",
-        database="crawl_pplf"
+        user="your db username",
+        password="your db password",
+        database="your dbname"
     )
     mycursor = mydb.cursor()
     sql = "REPLACE INTO data (id, kode_identitas, no_urut_kelg, no_urut_ruta, nama_kk, kabko, kec, keldes, kode_bs, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"

@@ -1,0 +1,43 @@
+#BUILD Backend App Image
+FROM php:8-alpine AS backend
+
+WORKDIR /var/www/html/
+
+#Essentials
+RUN echo "UTC" > /etc/timezone
+RUN apk add --no-cache zip unzip curl supervisor
+
+#installing bash
+RUN apk add bash
+# RUN sed -i 's/bin\/ash/bin/bash/g' /etc/passwd
+
+#Installing PHP module extension needed by Lumen Framework
+RUN apk add --no-cache php8-openssl \
+    php8-pdo \
+    php8-mbstring
+
+#Installing other PHP module extension
+RUN apk add --no-cache php8-cli \
+    php8-common \
+    php8-fpm \
+    php8-json \
+    php8-tokenizer \
+    php8-pdo_mysql
+
+#Create symbolic link. change the binary name because it's more common to use just php as a command than php8
+RUN ln -s /usr/bin/php8 /usr/bin/php
+
+#installing composer
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+RUN rm -rf composer-setup.php
+
+#Build proccess
+COPY . .
+# RUN useradd jrs6200
+RUN composer install --no-dev
+# RUN chown -R jrs6200:jrs6200 /var/www/html/storage
+# RUN php -S localhost:9000 -t public
+
+#Open Port to access apps
+EXPOSE 9000

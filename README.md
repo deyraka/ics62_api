@@ -5,6 +5,8 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
 [![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
 
+This app using Lumen Framework 8.0. This apps was build only for crawl ICS app's datas (using python file - crawling.py) and store them in database. All data stored serve to client/frontend using Lumen apps.
+
 Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
 
 ## Official Documentation
@@ -23,5 +25,3 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## About this app
-This app using Lumen Framework 8.0. This apps was build only for crawl ICS app's datas (using python file - crawling.py) and store them in database. All data stored serve to client/frontend using Lumen apps.
